@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Notifications</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-padding">
+        <ion-card>
+          <ion-item>
+            <ion-label>
+              Manage Banners
+              <form ngNoForm>
+                <input id="avatar" style="display:none" name="file" type="file" (change)="upload()">
+              </form>
+            </ion-label>
+            <ion-button slot="end" (click)="chooseFile()">Add Banner</ion-button>
+          </ion-item>
+          <ion-row *ngIf="banners.length != 0">
+            <ion-col *ngFor="let b of banners" size="3">
+              <img src="{{b.url}}" style="height:80px;width:auto" />
+              <ion-button size="small" (click)="deleteBanner(b.key)">Delete</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+        <ion-card>
+          <ion-item>
+            <ion-label>
+              Manage Notifications
+            </ion-label>
+            <ion-button slot="end" (click)="openEditor()">Add New</ion-button>
+          </ion-item>
+          <ion-list *ngIf="notifications.lengh != 0" lines="none">
+            <ion-item *ngFor="let n of notifications">
+              <ion-label>
+                <ion-text>
+                  <h3>{{n.title}}</h3>
+                  <p>{{n.message}}</p>
+                </ion-text>
+              </ion-label>
+              <ion-button slot="end" fill="outline" (click)="delete(n.key)">Delete</ion-button>
+            </ion-item>
+          </ion-list>
+        </ion-card>
+      </ion-col>
+      <ion-col size="4" class="ion-padding" *ngIf="isShow">
+        <ion-card>
+          <ion-list lines="none">
+            <ion-item>
+              <ion-button (click)="closeEditor()" fill="clear" slot="end">
+                <ion-icon name="close-circle"></ion-icon>
+              </ion-button>
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">Name</ion-label>
+              <ion-input type="text" [(ngModel)]="notification.title"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">Message</ion-label>
+              <ion-textarea type="text" [(ngModel)]="notification.message"></ion-textarea>
+            </ion-item>
+            <ion-radio-group [(ngModel)]="notification.for">
+              <ion-item>
+                <ion-label>Users</ion-label>
+                <ion-radio value="users"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Drivers</ion-label>
+                <ion-radio value="drivers"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Both</ion-label>
+                <ion-radio value="all"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          <div class="ion-padding">
+            <ion-button expand="block" *ngIf="!isEdit" (click)="add()">Add</ion-button>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

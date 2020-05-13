@@ -1,0 +1,19 @@
+ion-card{
+    --background: #fff;
+}
+ion-select{
+    margin:0 !important;
+    background: none !important;
+    border: none !important;
+}
+
+input{
+    padding: 2px !important;
+    height: 28px;
+    background: #f8f8f8;
+    outline: 0;
+    border: 0;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin: 2px;
+}

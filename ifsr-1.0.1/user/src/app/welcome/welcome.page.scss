@@ -1,0 +1,19 @@
+.header-md:after,.footer-md:before{
+    background-image: none;
+}
+ion-slides{
+    height: 100%;
+}
+ion-slide{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
+ion-slide img{
+    height: 180px;
+}
+ion-slide p{
+    font-size: 14px;
+    color:#555;
+}

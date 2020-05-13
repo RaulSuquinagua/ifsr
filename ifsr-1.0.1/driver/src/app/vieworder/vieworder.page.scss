@@ -1,0 +1,15 @@
+.cart{
+    display:flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.cart div{
+    padding: 4px;
+}
+.cart h5{
+    margin:0
+}
+.cart p{
+    color: #777;
+    margin: 4px 0px;
+}

@@ -1,0 +1,106 @@
+{
+  "project_info": {
+    "project_number": "305439070990",
+    "firebase_url": "https://codeziporg.firebaseio.com",
+    "project_id": "codeziporg",
+    "storage_bucket": "codeziporg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:305439070990:android:37a2193a5d22810d6d155f",
+        "android_client_info": {
+          "package_name": "com.codesundar.appone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "305439070990-mp3e7ae4req511ohiltd2en0jjfln4uc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCk4qLTwS2sLOHE5Fyo6El5k5ImWEB24sc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "305439070990-mp3e7ae4req511ohiltd2en0jjfln4uc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:305439070990:android:b6e3cb73af60deb86d155f",
+        "android_client_info": {
+          "package_name": "com.codesundar.apptwo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "305439070990-mp3e7ae4req511ohiltd2en0jjfln4uc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCk4qLTwS2sLOHE5Fyo6El5k5ImWEB24sc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "305439070990-mp3e7ae4req511ohiltd2en0jjfln4uc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:305439070990:android:c1eb7a52493bcb30",
+        "android_client_info": {
+          "package_name": "com.codesundar.fcm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "305439070990-ed7rq53kjpn7u59pt7kocafvm7fd66f2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.codesundar.fcm",
+            "certificate_hash": "6834e3a974f15f811506cd352325f729b3f19cef"
+          }
+        },
+        {
+          "client_id": "305439070990-mp3e7ae4req511ohiltd2en0jjfln4uc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCk4qLTwS2sLOHE5Fyo6El5k5ImWEB24sc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "305439070990-mp3e7ae4req511ohiltd2en0jjfln4uc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

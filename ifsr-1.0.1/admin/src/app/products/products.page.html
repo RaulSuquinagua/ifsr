@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ 'PRODUCTS' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-row>
+    <ion-col class="ion-padding">
+      <ion-card>
+        <ion-item>
+          <ion-label>
+            Manage Products
+          </ion-label>
+          <ion-buttons slot="end">
+            <ion-button size="small" fill="solid" (click)="openEditor()">Add New</ion-button>
+          </ion-buttons>
+        </ion-item>
+        <ion-list *ngIf="products.length != 0 " lines="none">
+          <ion-item *ngFor="let product of products">
+            <ion-thumbnail slot="start">
+              <img src="{{product.photoURL}}" onerror="this.src='http://placehold.it/500x500'" />
+            </ion-thumbnail>
+            <ion-label>
+              <h5>{{product.name}}</h5>
+              <p>{{currency}} {{product.price}}</p>
+            </ion-label>
+            <ion-button fill="outline" (click)="edit(product)">Edit</ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-card>
+    </ion-col>
+    <ion-col size="4" *ngIf="isShow">
+      <ion-card>
+        <ion-list lines="none">
+          <ion-item>
+            <ion-button (click)="closeEditor()" fill="clear" slot="end">
+              <ion-icon name="close-circle"></ion-icon>
+            </ion-button>
+          </ion-item>
+          <ion-item>
+            <ion-thumbnail>
+              <img src={{product.photoURL}} onerror="this.src='http://placehold.it/500x500'" />
+              <form ngNoForm>
+                <input id="avatar" name="file" type="file" (change)="upload()">
+              </form>
+            </ion-thumbnail>
+            <ion-button fill="outline" slot="end" (click)="chooseFile()">Upload</ion-button>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Name</ion-label>
+            <ion-input type="text" [(ngModel)]="product.name"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Price</ion-label>
+            <ion-input type="text" [(ngModel)]="product.price"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Category</ion-label>
+            <ion-select [(ngModel)]="product.category">
+              <ion-select-option value="{{c.key}}" *ngFor="let c of categories">{{c.name}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Description</ion-label>
+            <ion-textarea type="text" [(ngModel)]="product.description"></ion-textarea>
+          </ion-item>
+          <ion-item>
+            <ion-label>is Veg?</ion-label>
+            <ion-toggle type="text" [(ngModel)]="product.isVeg"></ion-toggle>
+          </ion-item>
+          <ion-item>
+            <ion-label>Available?</ion-label>
+            <ion-toggle type="text" [(ngModel)]="product.isAvail"></ion-toggle>
+          </ion-item>
+          <div class="ion-padding">
+            <ion-button expand="block" *ngIf="!isEdit" (click)="add()">Add</ion-button>
+            <ion-button expand="block" *ngIf="isEdit" (click)="update()">Update</ion-button>
+            <ion-button expand="block" color="danger" fill="clear" *ngIf="isEdit" (click)="delete()">Delete</ion-button>
+          </div>
+        </ion-list>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>

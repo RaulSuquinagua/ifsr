@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ 'DRIVER' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card style="background: #fff;">
+    <table>
+      <thead>
+        <tr>
+          <td>{{ 'STATUS' | translate }}</td>
+          <td>{{ 'NAME' | translate }}</td>
+          <td>{{ 'PINCODE' | translate }}</td>
+          <td>{{ 'ACTION' | translate }}</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let driver of drivers">
+          <td>
+            <ion-toggle [(ngModel)]="driver.isApproved" (click)="changeDriverStatus(driver.key,driver.isApproved)">
+            </ion-toggle>
+          </td>
+          <td>
+            <b>{{driver.name}}</b>
+            <p><a href="mailto:{{driver.email}}">{{driver.email}}</a> / <a
+                href="tel:{{driver.mobile}}">{{driver.mobile}}</a></p>
+
+          </td>
+          <td>
+            <ion-textarea [(ngModel)]="driver.pinStr"></ion-textarea>
+            <p></p>
+            <ion-button size="small" (click)="updatePincode(driver.key,driver.pinStr)">{{ 'SAVE' | translate }}
+            </ion-button>
+          </td>
+          <td>
+            <ion-button fill="outline" routerLink="/orders/driver/{{driver.key}}" size="small">
+              {{ 'VIEW_ORDERS' | translate }}
+            </ion-button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ion-card>
+</ion-content>

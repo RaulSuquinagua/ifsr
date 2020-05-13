@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'PROFILE' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div style="text-align: center; padding: 1rem">
+    <img src={{user.photoURL}} (click)="chooseFile()" style="height:80px;width:80px;border-radius: 100px;"
+      onerror="this.src='./assets/sample.png'" />
+    <form ngNoForm>
+      <input id="avatar" name="file" type="file" (change)="upload()">
+    </form>
+  </div>
+  <ion-list lines="none">
+    <ion-item>
+      <ion-label position="stacked">{{ 'NAME' | translate }}</ion-label>
+      <ion-input type="text" [(ngModel)]="user.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">{{ 'EMAIL' | translate }}</ion-label>
+      <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">{{ 'MOBILE' | translate }}</ion-label>
+      <ion-input type="text" [(ngModel)]="user.mobile"></ion-input>
+    </ion-item>
+  </ion-list>
+  <div class="ion-padding">
+    <ion-button (click)="update()" expand="block">{{ 'SAVE' | translate }}</ion-button>
+    &nbsp;&nbsp;
+    <ion-button (click)="logout()" color="danger" fill="clear" expand="block">{{ 'LOGOUT' | translate }}</ion-button>
+  </div>
+
+</ion-content>

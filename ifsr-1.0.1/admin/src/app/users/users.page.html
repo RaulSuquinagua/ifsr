@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ 'USERS' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <p *ngIf="users.length == 0">No users found</p>
+    <table *ngIf="users.length != 0">
+      <thead>
+        <tr>
+          <td>{{ 'NAME' | translate }}</td>
+          <td>{{ 'EMAIL' | translate }}</td>
+          <td>{{ 'MOBILE' | translate }}</td>
+          <td>{{ 'ACTION' | translate }}</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>
+            <b>{{user.name}}</b>
+          </td>
+          <td>
+            <p><a href="mailto:{{user.email}}">{{user.email}}</a></p>
+          </td>
+          <td>
+            <p><a href="tel:{{user.mobile}}">{{user.mobile}}</a></p>
+          </td>
+          <td>
+            <ion-button slot="end" fill="outline" size="small" routerLink="/orders/user/{{user.key}}">
+              {{ 'VIEW_ORDERS' | translate }}
+            </ion-button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ion-card>
+</ion-content>

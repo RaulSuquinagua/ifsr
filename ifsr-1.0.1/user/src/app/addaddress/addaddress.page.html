@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="!isEdit">{{ 'ADD' | translate }} {{ 'ADDRESS' | translate }}</ion-title>
+    <ion-title *ngIf="isEdit">{{ 'UPDATE' | translate }} {{ 'ADDRESS' | translate }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button *ngIf="isEdit" expand="block" color="danger" fill="clear" (click)="delete()">
+        {{ 'DELETE' | translate }}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div #map id="map"></div>
+  <ion-list lines="none">
+    <ion-item>
+      <ion-label position="stacked">{{ 'TAG' | translate }}</ion-label>
+      <ion-input type="text" placeholder="Home, Office" [(ngModel)]="address.tag"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">{{ 'ADDRESS' | translate }}</ion-label>
+      <ion-textarea type="text" [(ngModel)]="address.address"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">{{ 'PINCODE' | translate }}</ion-label>
+      <ion-input type="text" [(ngModel)]="address.pin"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">{{ 'LANDMARK' | translate }}</ion-label>
+      <ion-input type="text" [(ngModel)]="address.landmark"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">{{ 'MOBILE' | translate }}</ion-label>
+      <ion-input type="tel" [(ngModel)]="address.mobile"></ion-input>
+    </ion-item>
+  </ion-list>
+  <div class="ion-padding">
+    <ion-button *ngIf="!isEdit" expand="block" (click)="add()">{{ 'ADD' | translate }}</ion-button>
+    <ion-button *ngIf="isEdit" expand="block" (click)="update()">{{ 'UPDATE' | translate }}</ion-button>
+  </div>
+
+</ion-content>

@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'ORDER' | translate }} - #{{order.createdAt}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list lines="none">
+    <ion-item>
+      <ion-label>
+        <h3>{{ 'STATUS' | translate }}</h3>
+        <p>{{order.orderStatus}}</p>
+      </ion-label>
+      <select [(ngModel)]="order.orderStatus" slot="end" (change)="changeStatus()">
+        <option value="ontheway">ON THE WAY</option>
+        <option value="delivered">DELIVERED</option>
+      </select>
+    </ion-item>
+    <ion-item *ngIf="order.address != undefined">
+      <ion-label>
+        <h3>{{user.name}}</h3>
+        <p>{{order.address.mobile}}</p>
+      </ion-label>
+      <ion-text slot="end">
+        <a href="tel:{{order.address.mobile}}" target="_blank">{{ 'CALL' | translate }}</a>
+      </ion-text>
+    </ion-item>
+    <ion-item *ngIf="order.address != undefined">
+      <ion-label>
+        <h3>{{ 'ADDRESS' | translate }}</h3>
+        <p class="text-wrap">{{order.address.address}} {{order.address.pincode}} <br> {{order.address.landmark}}</p>
+      </ion-label>
+      <ion-text slot="end">
+        <a href="https://www.google.com/maps?saddr={{lat}},{{lng}}&daddr={{order.address.lat}},{{order.address.lng}}"
+          target="_blank">{{ 'NAVIGATE' | translate }}</a>
+      </ion-text>
+    </ion-item>
+    <ion-item-divider>
+      <ion-label>
+        {{ 'CART' | translate }}
+      </ion-label>
+    </ion-item-divider>
+    <ion-item *ngFor="let item of cart; let i = index" lines="none">
+      <ion-checkbox slot="start"></ion-checkbox>
+      <ion-label>
+        <h3>{{item.name}}</h3>
+        <p>{{item.qty}} x {{currency}} {{item.price}}</p>
+      </ion-label>
+      <ion-text slot="end">
+        {{currency}} {{item.total}}
+      </ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        {{ 'TOTAL' | translate }}
+      </ion-label>
+      <ion-text slot="end">
+        {{currency}} {{finalPrice}}
+      </ion-text>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

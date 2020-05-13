@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{ 'FORGET' | translate }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="login-header">
+    <img src="./assets/images/icon.png" />
+    <h3>{{ 'APP_NAME' | translate}}</h3>
+    <p>{{'APP_SLOGAN' | translate}}</p>
+  </div>
+  <ion-list lines="none">
+    <ion-item>
+      <ion-label position="stacked">{{ 'EMAIL' | translate }}</ion-label>
+      <ion-input type="text" [(ngModel)]="email"></ion-input>
+    </ion-item>
+    <div class="ion-padding">
+      <ion-button expand="block" (click)="reset()">{{ 'RESET_PASSWORD' | translate }}</ion-button>
+    </div>
+  </ion-list>
+</ion-content>

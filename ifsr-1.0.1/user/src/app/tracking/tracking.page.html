@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'TRACK_ORDER' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div #map id="map" style="height: 100%;width: 100%"></div>
+</ion-content>
+
+<ion-footer *ngIf="driver != null">
+  <ion-toolbar>
+    <ion-item>
+      <ion-avatar slot="start">
+        <img src="{{driver.photoURL}}" />
+      </ion-avatar>
+      <ion-label>
+        <h3>{{driver.name}}</h3>
+        <p>{{distanceText}} {{durationText}}</p>
+      </ion-label>
+      <ion-button slot="end" (click)="call(driver.mobile)">
+        {{ 'CALL' | translate }}
+      </ion-button>
+    </ion-item>
+  </ion-toolbar>
+</ion-footer>

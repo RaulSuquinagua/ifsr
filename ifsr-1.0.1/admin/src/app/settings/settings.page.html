@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ 'SETTINGS' | translate }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">{{ 'LOGOUT' | translate }}</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-content>
+      <table>
+        <tr>
+          <td>{{ 'LANGUAGE' | translate }}</td>
+          <td>
+            <select (change)="changeLang()" [(ngModel)]="lang">
+              <option value="en">English</option>
+              <option value="ar">عربى</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>{{ 'SUPPORTED_PINCODE' | translate }}</td>
+          <td>
+            <p>{{ 'COMMA' | translate }}</p>
+            <ion-textarea [(ngModel)]="pincodes"></ion-textarea>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <ion-button (click)="save()">{{ 'SAVE' | translate }}</ion-button>
+          </td>
+        </tr>
+      </table>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

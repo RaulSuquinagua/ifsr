@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{ 'REGISTER' | translate }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="login-header">
+    <img src="./assets/images/icon.png" />
+    <h3>{{ 'APP_NAME' | translate}}</h3>
+    <p>{{ 'APP_SLOGAN' | translate}}</p>
+  </div>
+  <ion-list lines="none">
+    <ion-item>
+      <ion-label position="stacked">{{ 'NAME' | translate }}</ion-label>
+      <ion-input type="text" [(ngModel)]="userInfo.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">{{ 'EMAIL' | translate }}</ion-label>
+      <ion-input type="text" [(ngModel)]="userInfo.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">{{ 'PASSWORD' | translate }}</ion-label>
+      <ion-input type="password" [(ngModel)]="userInfo.password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">{{ 'MOBILE' | translate }}</ion-label>
+      <ion-input type="text" [(ngModel)]="userInfo.mobile"></ion-input>
+    </ion-item>
+  </ion-list>
+  <div class="ion-padding">
+    <ion-button expand="block" (click)="register()">
+      {{ 'REGISTER' | translate }}
+    </ion-button>
+  </div>
+
+</ion-content>

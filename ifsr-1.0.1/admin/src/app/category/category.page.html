@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>category</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-padding">
+        <ion-card>
+          <ion-item>
+            <ion-label>
+              Manage Categories
+            </ion-label>
+            <ion-button slot="end" (click)="openEditor()">Add New</ion-button>
+          </ion-item>
+          <ion-list *ngIf="categories.lengh != 0" lines="none">
+            <ion-item *ngFor="let c of categories">
+              <ion-thumbnail slot="start">
+                <img src="{{c.photoURL}}" />
+              </ion-thumbnail>
+              <ion-label>
+                <ion-text>
+                  {{c.name}}
+                </ion-text>
+              </ion-label>
+              <ion-button slot="end" fill="outline" (click)="edit(c)">Edit</ion-button>
+            </ion-item>
+          </ion-list>
+        </ion-card>
+      </ion-col>
+      <ion-col size="4" class="ion-padding" *ngIf="isShow">
+        <ion-card>
+          <ion-list lines="none">
+            <ion-item>
+              <ion-button (click)="closeEditor()" fill="clear" slot="end">
+                <ion-icon name="close-circle"></ion-icon>
+              </ion-button>
+            </ion-item>
+            <ion-item>
+              <ion-thumbnail slot="start">
+                <img src={{category.photoURL}} onerror="this.src='http://placehold.it/500x500'" />
+              </ion-thumbnail>
+              <ion-button slot="end" fill="outline" (click)="chooseFile()">Upload</ion-button>
+              <form ngNoForm>
+                <input id="avatar" style="display: none;" name="file" type="file" (change)="upload()">
+              </form>
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">Name</ion-label>
+              <ion-input type="text" [(ngModel)]="category.name"></ion-input>
+            </ion-item>
+          </ion-list>
+          <div class="ion-padding">
+            <ion-button expand="block" *ngIf="!isEdit" (click)="add()">Add</ion-button>
+            <ion-button expand="block" *ngIf="isEdit" (click)="update()">Update</ion-button>
+            <ion-button expand="block" color="danger" fill="clear" *ngIf="isEdit" (click)="delete()">DELETE</ion-button>
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

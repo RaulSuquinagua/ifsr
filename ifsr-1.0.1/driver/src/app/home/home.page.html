@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{ 'HOME' | translate }}
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/settings">
+        <ion-icon name="settings"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="not-found" *ngIf="orders.length == 0">
+    <img src="./assets/images/nodata.png" />
+    <p>No Orders Found</p>
+  </div>
+  <ion-list lines="none" *ngIf="orders.length != 0">
+    <ion-item *ngFor="let order of orders" routerLink="/vieworder/{{order.key}}">
+      <ion-label>
+        <h3># {{order.createdAt}}</h3>
+        <p *ngIf="order.cart != undefined">{{currency}} {{order.finalPrice}} - {{order.cart.length}} items</p>
+      </ion-label>
+      <ion-badge>
+        {{order.orderStatus}}
+      </ion-badge>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer class="ion-padding" *ngIf="driver.isApproved">
+  <ion-toolbar>
+    <ion-button color="success" *ngIf="!driver.isActive" (click)="changeStatus()" expand="block">
+      {{ 'GOONLINE' | translate}}</ion-button>
+    <ion-button color="danger" *ngIf="driver.isActive" (click)="changeStatus()" expand="block">
+      {{'GOOFFLINE' | translate}}</ion-button>
+    <p *ngIf="location.lat != undefined">You're Here: {{location.lat}}, {{location.lng}}</p>
+  </ion-toolbar>
+</ion-footer>

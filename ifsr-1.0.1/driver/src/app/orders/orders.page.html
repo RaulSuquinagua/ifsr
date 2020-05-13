@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'ORDERS' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="not-found" *ngIf="orders.length == 0">
+    <img src="./assets/images/nodata.png" />
+    <p>{{ 'NO_ITEMS_FOUND' | translate }}</p>
+  </div>
+  <ion-list lines="none" *ngIf="orders.length != 0">
+    <ion-item *ngFor="let order of orders" routerLink="/vieworder/{{order.key}}">
+      <ion-label>
+        <p style="font-size: 12px">{{order.createdAt | date: 'MMM dd, yyyy  h:mm a'}}</p>
+        <h3 style="font-size: 20px;font-weight: 700;">#{{order.createdAt}}</h3>
+        <p *ngIf="order.cart != undefined">{{order.cart.length}} items - {{currency}} {{order.finalPrice}}</p>
+      </ion-label>
+      <ion-badge slot="end">
+        {{order.orderStatus}}
+      </ion-badge>
+    </ion-item>
+  </ion-list>
+</ion-content>

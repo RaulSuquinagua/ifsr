@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'MANAGE_ADDRESS' | translate }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="outline" routerLink="/addaddress">{{ 'ADD' | translate }}</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="not-found" *ngIf="addresses.length == 0">
+    <img src="./assets/images/nodata.png" />
+    <p>{{ 'NO_ITEMS_FOUND' | translate }}</p>
+  </div>
+  <ion-list lines="none">
+    <ion-item *ngFor="let address of addresses">
+      <ion-label>
+        <ion-text>
+          <h3>{{address.tag}}</h3>
+        </ion-text>
+        <ion-text>
+          <p>{{address.address}}</p>
+        </ion-text>
+      </ion-label>
+      <ion-button fill="clear" slot="end" routerLink="/address/edit/{{address.key}}">
+        <ion-icon name="create"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
